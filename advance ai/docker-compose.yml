@@ -1,0 +1,16 @@
+services:
+  nexus-ai:
+    build: .
+    container_name: nexus-ai
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    volumes:
+      # Persistent storage for SQLite database, configuration, and uploads
+      - nexus_data:/app/data
+
+volumes:
+  nexus_data:
+    driver: local

@@ -1,0 +1,22 @@
+{
+  "active_provider": "local",
+  "gemini_api_key": "",
+  "openai_api_key": "",
+  "groq_api_key": "",
+  "ollama_base_url": "http://localhost:11434",
+  "gemini_model": "gemini-2.0-flash",
+  "openai_model": "gpt-4o-mini",
+  "groq_model": "llama-3.3-70b-versatile",
+  "ollama_model": "llama3",
+  "temperature": 0.7,
+  "system_persona": "You are Nexus-AI, an advanced autonomous AI assistant. You have access to tools including Python code execution, live web search, file workspace operations, and exact mathematical calculation. Always be helpful, precise, analytical, and structured in your explanations.",
+  "enabled_tools": [
+    "code_runner",
+    "web_search",
+    "file_manager",
+    "calculator",
+    "system_info",
+    "weather_info",
+    "datetime_info"
+  ]
+}
