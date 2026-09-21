@@ -1098,48 +1098,21 @@ class NexusApp {
 
   renderMarkdown(text) {
     if (!text) return '';
+    if (typeof marked !== 'undefined') {
+      try {
+        return marked.parse(text);
+      } catch (e) {
+        console.error('Marked parsing error:', e);
+      }
+    }
+    
+    // Basic fallback if marked fails to load
     let html = text;
-
-    // Code blocks with syntax copy button and language header
     html = html.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, (match, lang, code) => {
-      const safeLang = (lang || 'code').toLowerCase();
-      const safeCode = this.escapeHtml(code.trim());
-      return `
-        <div class="code-block-wrapper">
-          <div class="code-block-header">
-            <span class="code-lang">${safeLang}</span>
-            <button type="button" class="copy-code-btn" onclick="app.copyCode(this)">📋 Copy</button>
-          </div>
-          <pre><code class="language-${safeLang}">${safeCode}</code></pre>
-        </div>
-      `;
+      return `<div class="code-block-wrapper"><pre><code>${this.escapeHtml(code)}</code></pre></div>`;
     });
-
-    // Inline code
     html = html.replace(/`([^`]+)`/g, (m, c) => `<code>${this.escapeHtml(c)}</code>`);
-
-    // Markdown Links
-    html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-
-    // Headers
-    html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-    html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-    html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-
-    // Blockquotes
-    html = html.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>');
-
-    // Bold & Italic
-    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-    // Unordered lists
-    html = html.replace(/^\s*-\s+(.*$)/gim, '<li>$1</li>');
-    html = html.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
-
-    // Line breaks
     html = html.replace(/\n\n/g, '<br/><br/>');
-
     return html;
   }
 }
