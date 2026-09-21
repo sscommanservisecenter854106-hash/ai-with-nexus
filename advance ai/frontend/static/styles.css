@@ -19,6 +19,19 @@
   --text-dim: #64748b;
 }
 
+:root.light-mode {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-glass: rgba(241, 245, 249, 0.7);
+  --border-glass: rgba(0, 0, 0, 0.1);
+  --border-focus: rgba(0, 200, 255, 0.6);
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

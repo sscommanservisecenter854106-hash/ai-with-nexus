@@ -4,6 +4,26 @@ class NexusApp {
     this.sessionId = null;
     this.ws = null;
     this.isGenerating = false;
+    this.isLightMode = localStorage.getItem('nexus-light-mode') === 'true';
+
+    // Initialize Theme
+    this.applyTheme();
+
+    // Markdown configuration
+    if (typeof marked !== 'undefined') {
+      marked.setOptions({
+        breaks: true,
+        gfm: true,
+        highlight: function(code, lang) {
+          if (typeof hljs !== 'undefined') {
+            const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+            return hljs.highlight(code, { language }).value;
+          }
+          return code;
+        }
+      });
+    }
+
     this.currentAssistantMessageEl = null;
     this.currentThoughtEl = null;
     this.currentContentEl = null;
@@ -46,6 +66,7 @@ class NexusApp {
     this.clearRagBtn = document.getElementById('clear-rag-btn');
 
     // Header Actions
+    this.themeToggleBtn = document.getElementById('theme-toggle-btn');
     this.exportChatBtn = document.getElementById('export-chat-btn');
     this.exportDropdown = document.getElementById('export-dropdown');
     this.clearChatBtn = document.getElementById('clear-chat-btn');
@@ -449,6 +470,9 @@ class NexusApp {
 
     if (this.clearChatBtn) {
       this.clearChatBtn.addEventListener('click', () => this.clearCurrentConversation());
+    }
+    if (this.themeToggleBtn) {
+      this.themeToggleBtn.addEventListener('click', () => this.toggleTheme());
     }
 
     // Modal Triggers
@@ -1083,6 +1107,46 @@ class NexusApp {
       URL.revokeObjectURL(url);
     } catch (e) {
       alert('Failed to export conversation: ' + e.message);
+    }
+  }
+
+  toggleTheme() {
+    this.isLightMode = !this.isLightMode;
+    localStorage.setItem('nexus-light-mode', this.isLightMode);
+    this.applyTheme();
+  }
+
+  applyTheme() {
+    if (this.isLightMode) {
+      document.documentElement.classList.add('light-mode');
+      if (this.themeToggleBtn) {
+        this.themeToggleBtn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        `;
+      }
+      const hljsTheme = document.getElementById('highlight-theme');
+      if (hljsTheme) hljsTheme.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css';
+    } else {
+      document.documentElement.classList.remove('light-mode');
+      if (this.themeToggleBtn) {
+        this.themeToggleBtn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        `;
+      }
+      const hljsTheme = document.getElementById('highlight-theme');
+      if (hljsTheme) hljsTheme.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css';
     }
   }
 

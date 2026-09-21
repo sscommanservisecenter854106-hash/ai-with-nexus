@@ -876,6 +876,21 @@ class SelfAIEngine:
                     )
                 }
 
+        # 14.5 Debugging and Help in Hindi
+        if any(kw in q for kw in ["output nahi", "error aa", "bug hai", "chal nahi raha", "not working", "kaam nahi kar"]):
+            return {
+                "thought": "Recognized user needs help debugging an issue.",
+                "tool_calls": [],
+                "content": (
+                    "### 🛠️ Debugging Assistant\n\n"
+                    "It looks like you are facing an issue or not getting the expected output. "
+                    "To help me fix the bug, please tell me:\n"
+                    "- **What code or command are you running?**\n"
+                    "- **Are there any error messages in the console?**\n\n"
+                    "*Tip: You can paste your code here, and I will analyze it!*"
+                )
+            }
+
         # 15. General Questions & Information Inquiries -> Autonomous Live Web Search
         question_words = [
             "who", "what", "where", "when", "why", "how", "which", "whose", "whom",
