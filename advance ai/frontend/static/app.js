@@ -960,7 +960,7 @@ class NexusApp {
       ollama_base_url: document.getElementById('setting-ollama-url').value,
       temperature: parseFloat(document.getElementById('setting-temperature').value),
       system_persona: document.getElementById('setting-persona').value,
-      gemini_model: "gemini-2.0-flash",
+      gemini_model: "gemini-3.6-flash",
       openai_model: "gpt-4o-mini",
       groq_model: "llama-3.3-70b-versatile",
       ollama_model: "llama3",

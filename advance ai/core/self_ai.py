@@ -384,7 +384,7 @@ class SelfAIEngine:
         if best_chunk:
             return (
                 f"### 📄 Information from Uploaded Knowledge Base:\n\n"
-                f"{best_chunk}\n\n"
+                f"```text\n{best_chunk}\n```\n\n"
                 f"*Synthesized autonomously from your indexed documents.*"
             )
         return None
