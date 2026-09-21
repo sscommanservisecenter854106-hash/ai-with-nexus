@@ -471,6 +471,7 @@ class SelfAIEngine:
             "content": (
                 f"### 💡 Nexus Self-AI Insight{name_str}\n\n"
                 f"**Query**: *\"{q_clean}\"*\n\n"
+                f"I processed your request but didn't trigger any specific tool or find an exact match in my offline knowledge.\n\n"
                 f"- **Domain**: {domain}\n"
                 f"- **Overview**: Your query involves analyzing concepts related to **{', '.join(keywords[:4]) or q_clean}**.\n"
                 f"- **Next Steps**: {guidance}\n\n"
@@ -601,13 +602,34 @@ class SelfAIEngine:
             elif math_what_is:
                 expr = math_what_is.group(2).strip("? .")
             else:
-                expr = raw_query.strip()
-            expr = expr.replace("x", "*").replace("times", "*").replace("divided by", "/")
-            return {
-                "thought": f"Recognized math calculation request: '{expr}'. Routing to Calculator Tool.",
-                "tool_calls": [{"name": "calculator", "args": {"expression": expr}}],
-                "content": ""
-            }
+                expr = q.strip("? .")
+            
+            # Avoid empty or invalid expressions
+            if expr and not expr.isspace() and len(expr) > 0:
+                return {
+                    "thought": f"Recognized exact math calculation requirement. Routing '{expr}' to calculator tool.",
+                    "tool_calls": [{"name": "calculator", "args": {"expression": expr}}],
+                    "content": ""
+                }
+
+        # Conversational handling
+        conversational = {
+            "who are you": "I am Nexus-AI, an autonomous self-hosted AI platform designed to help you with research, coding, calculations, and general knowledge.",
+            "what are you": "I am Nexus-AI, an autonomous self-hosted AI platform designed to help you with research, coding, calculations, and general knowledge.",
+            "how are you": "I'm functioning perfectly and ready to assist you! How can I help you today?",
+            "what is your name": "My name is Nexus-AI.",
+            "tumhara naam kya hai": "Mera naam Nexus-AI hai, aur main ek autonomous AI assistant hoon.",
+            "tum kaun ho": "Main Nexus-AI hoon, ek autonomous AI assistant.",
+            "kaise ho": "Main theek hoon! Aap batayein main aapki kaise madad kar sakta hoon?",
+            "aap kaun ho": "Main Nexus-AI hoon, ek autonomous AI assistant."
+        }
+        for k, v in conversational.items():
+            if k in q:
+                return {
+                    "thought": f"Recognized conversational query. Responding directly.",
+                    "tool_calls": [],
+                    "content": f"{v}"
+                }
 
         # 3. Python Code Execution
         if any(kw in q for kw in ["run python", "execute python", "run code", "test code", "execute script"]):
@@ -867,8 +889,7 @@ class SelfAIEngine:
         is_question = (
             q.endswith("?") or
             any(q.startswith(qw) or f" {qw} " in f" {q} " for qw in question_words) or
-            any(kw in q for kw in ["search", "look up", "news", "update"]) or
-            len(raw_query.split()) >= 2
+            any(kw in q for kw in ["search", "look up", "news", "update", "batao", "kya", "kaun"])
         )
 
         if is_question:

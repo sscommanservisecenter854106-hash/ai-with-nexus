@@ -1,0 +1,28 @@
+Connected.
+RECV: {"type":"thought","data":"Detected real-time weather query for 'tokyo'. Routing to weather_info tool."}
+RECV: {"type":"tool_start","name":"weather_info","args":{"location":"tokyo"}}
+RECV: {"type":"tool_end","name":"weather_info","result":"🌍 **Live Weather Report: Shikinejima, Tokyo, Japan**\n- **Conditions**: Light rain shower\n- **Temperature**: 24°C (Feels like 17°C)\n- **Humidity**: 93%\n- **Wind Speed**: 57 km/h\n- **Precipitation**: 0.3 mm\n- **UV Index**: 0"}
+RECV: {"type":"thought","data":"Presenting real-time weather report."}
+RECV: {"type":"token","data":"### 🌤️ Weath"}
+RECV: {"type":"token","data":"er Report\n\n🌍"}
+RECV: {"type":"token","data":" **Live Weat"}
+RECV: {"type":"token","data":"her Report: "}
+RECV: {"type":"token","data":"Shikinejima,"}
+RECV: {"type":"token","data":" Tokyo, Japa"}
+RECV: {"type":"token","data":"n**\n- **Cond"}
+RECV: {"type":"token","data":"itions**: Li"}
+RECV: {"type":"token","data":"ght rain sho"}
+RECV: {"type":"token","data":"wer\n- **Temp"}
+RECV: {"type":"token","data":"erature**: 2"}
+RECV: {"type":"token","data":"4°C (Feels l"}
+RECV: {"type":"token","data":"ike 17°C)\n- "}
+RECV: {"type":"token","data":"**Humidity**"}
+RECV: {"type":"token","data":": 93%\n- **Wi"}
+RECV: {"type":"token","data":"nd Speed**: "}
+RECV: {"type":"token","data":"57 km/h\n- **"}
+RECV: {"type":"token","data":"Precipitatio"}
+RECV: {"type":"token","data":"n**: 0.3 mm\n"}
+RECV: {"type":"token","data":"- **UV Index"}
+RECV: {"type":"token","data":"**: 0"}
+RECV: {"type":"done","session_id":"test_session_2"}
+ERROR: [WinError 1225] The remote computer refused the network connection

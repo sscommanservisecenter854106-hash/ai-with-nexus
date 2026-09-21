@@ -38,7 +38,7 @@ class GeminiProvider(BaseLLMProvider):
 
         # Convert chat messages to Gemini contents format
         contents = []
-        system_instruction = None
+        system_instructions = []
         for m in messages:
             if m["role"] == "system":
                 if "Observation" in m.get("content", ""):
@@ -47,7 +47,7 @@ class GeminiProvider(BaseLLMProvider):
                         "parts": [{"text": f"[Tool Observation]\n{m['content']}"}]
                     })
                 else:
-                    system_instruction = {"parts": [{"text": m["content"]}]}
+                    system_instructions.append(m["content"])
             else:
                 role = "user" if m["role"] == "user" else "model"
                 contents.append({
@@ -59,8 +59,10 @@ class GeminiProvider(BaseLLMProvider):
             "contents": contents,
             "generationConfig": {"temperature": temperature}
         }
-        if system_instruction:
-            payload["systemInstruction"] = system_instruction
+        
+        system_instruction_text = "\n\n".join(system_instructions)
+        if system_instruction_text:
+            payload["systemInstruction"] = {"parts": [{"text": system_instruction_text}]}
 
         # Convert tool schemas to Gemini function declarations if provided
         if tools_schema:

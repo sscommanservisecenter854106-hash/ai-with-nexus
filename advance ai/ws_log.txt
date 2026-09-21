@@ -1,0 +1,76 @@
+Connected.
+RECV: {"type":"thought","data":"Greeting received. Introducing Nexus Self-AI engine."}
+RECV: {"type":"token","data":"### 👋 Hello!"}
+RECV: {"type":"token","data":" Welcome to "}
+RECV: {"type":"token","data":"**Nexus Self"}
+RECV: {"type":"token","data":"-AI**.\n\nI am"}
+RECV: {"type":"token","data":" your **100%"}
+RECV: {"type":"token","data":" self-hosted"}
+RECV: {"type":"token","data":" autonomous "}
+RECV: {"type":"token","data":"AI platform*"}
+RECV: {"type":"token","data":"*, running e"}
+RECV: {"type":"token","data":"ntirely on y"}
+RECV: {"type":"token","data":"our machine "}
+RECV: {"type":"token","data":"**without an"}
+RECV: {"type":"token","data":"y external A"}
+RECV: {"type":"token","data":"PIs or fees*"}
+RECV: {"type":"token","data":"*.\n\n**Here i"}
+RECV: {"type":"token","data":"s what I can"}
+RECV: {"type":"token","data":" do for you "}
+RECV: {"type":"token","data":"right now:**"}
+RECV: {"type":"token","data":"\n- 🌐 **Answe"}
+RECV: {"type":"token","data":"rs & Questio"}
+RECV: {"type":"token","data":"ns**: Ask me"}
+RECV: {"type":"token","data":" anything (G"}
+RECV: {"type":"token","data":"K, Science, "}
+RECV: {"type":"token","data":"Technology, "}
+RECV: {"type":"token","data":"World News, "}
+RECV: {"type":"token","data":"Places, Hist"}
+RECV: {"type":"token","data":"ory)\n- 🧮 **M"}
+RECV: {"type":"token","data":"ath & Calcul"}
+RECV: {"type":"token","data":"ation**: *\"C"}
+RECV: {"type":"token","data":"alculate sqr"}
+RECV: {"type":"token","data":"t(256) + 42 "}
+RECV: {"type":"token","data":"* 3\"*\n- 🐍 **"}
+RECV: {"type":"token","data":"Run Python C"}
+RECV: {"type":"token","data":"ode**: *\"Run"}
+RECV: {"type":"token","data":" python code"}
+RECV: {"type":"token","data":" to test pri"}
+RECV: {"type":"token","data":"me numbers\"*"}
+RECV: {"type":"token","data":"\n- 🖥️ **Syst"}
+RECV: {"type":"token","data":"em Diagnosti"}
+RECV: {"type":"token","data":"cs**: *\"Chec"}
+RECV: {"type":"token","data":"k system sta"}
+RECV: {"type":"token","data":"tus and disk"}
+RECV: {"type":"token","data":" space\"*\n- 🌤"}
+RECV: {"type":"token","data":"️ **Live Glo"}
+RECV: {"type":"token","data":"bal Weather*"}
+RECV: {"type":"token","data":"*: *\"What is"}
+RECV: {"type":"token","data":" the weather"}
+RECV: {"type":"token","data":" in Tokyo?\"*"}
+RECV: {"type":"token","data":"\n- 🕒 **Live "}
+RECV: {"type":"token","data":"Date & Time*"}
+RECV: {"type":"token","data":"*: *\"What ti"}
+RECV: {"type":"token","data":"me is it rig"}
+RECV: {"type":"token","data":"ht now?\"*\n- "}
+RECV: {"type":"token","data":"📚 **Knowledg"}
+RECV: {"type":"token","data":"e & Explaine"}
+RECV: {"type":"token","data":"rs**: Ask me"}
+RECV: {"type":"token","data":" about LoRA,"}
+RECV: {"type":"token","data":" RAG, Transf"}
+RECV: {"type":"token","data":"ormers, Dock"}
+RECV: {"type":"token","data":"er, Algorith"}
+RECV: {"type":"token","data":"ms.\n- 📁 **Do"}
+RECV: {"type":"token","data":"cument RAG**"}
+RECV: {"type":"token","data":": Drop docum"}
+RECV: {"type":"token","data":"ents in the "}
+RECV: {"type":"token","data":"chat or ask "}
+RECV: {"type":"token","data":"me to inspec"}
+RECV: {"type":"token","data":"t workspace "}
+RECV: {"type":"token","data":"files.\n\nHow "}
+RECV: {"type":"token","data":"can I assist"}
+RECV: {"type":"token","data":" you today? "}
+RECV: {"type":"token","data":"(आप कोई भी स"}
+RECV: {"type":"token","data":"वाल पूछ सकते"}
+RECV: {"type":"token","data":" हैं!)"}
+RECV: {"type":"done","session_id":"test_session"}
