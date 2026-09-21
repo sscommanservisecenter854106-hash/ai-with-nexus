@@ -21,7 +21,7 @@ class BaseLLMProvider(ABC):
         pass
 
 class GeminiProvider(BaseLLMProvider):
-    def __init__(self, api_key: str, model: str = "gemini-2.0-flash"):
+    def __init__(self, api_key: str, model: str = "gemini-3.6-flash"):
         self.api_key = api_key
         self.model = model
 

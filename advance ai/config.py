@@ -18,7 +18,7 @@ DEFAULT_CONFIG = {
     "openai_api_key": os.getenv("OPENAI_API_KEY", ""),
     "groq_api_key": os.getenv("GROQ_API_KEY", ""),
     "ollama_base_url": os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
-    "gemini_model": os.getenv("GEMINI_MODEL", "gemini-2.0-flash"),
+    "gemini_model": os.getenv("GEMINI_MODEL", "gemini-3.6-flash"),
     "openai_model": os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
     "groq_model": os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
     "ollama_model": os.getenv("OLLAMA_MODEL", "llama3"),
